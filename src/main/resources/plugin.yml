@@ -1,0 +1,23 @@
+name: DisableChat
+version: ${project.version}
+main: net.beocraft.plugins.disablechat.DisableChat
+api-version: 1.16
+prefix: DisableChat
+authors: [ Pequla ]
+description: Plugin that disables chat
+website: https://beocraft.net/plugins
+commands:
+  disablechat:
+    description: Controls the plugin
+    permission: disablechat.admin
+    usage: "§cUsage: /<command> [enable | disable]"
+    aliases: [dc]
+permissions:
+  disablechat.admin:
+    description: Enables the admin command
+  disablechat.bypass:
+    description: Allows the player to bypass the chat restriction
+  disablechat.*:
+    children:
+      disablechat.admin: true
+      disablechat.bypass: true
