@@ -1,5 +1,6 @@
 # DisableChat - Spigot plugin
 This plugin disables ingame chat functionality, its really fast, optimised and simple to use! This plugin required Java 8 or later runtime installed on your server!
+> **_NOTE:_**  This plugin disables only the game chat function, in order to fully disallow players ability to send text you will need to remove his `minecraft.command.tell` and `minecraft.command.me` permissions too!
 ## Installation
 Navigate to the [download page](https://github.com/Beocraft/DisableChat/releases/latest) and download the jar file, put it in your plugins forlder and then restart or reload (this plugin is optimised for server reloads but other plugins on your server may brake) the server. By default **only operatirs will be able to bypass the chat restriction**.
 ## Customisations
