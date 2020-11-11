@@ -18,7 +18,9 @@ public class ChatListener implements Listener {
     public void onPlayerChatEvent(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         if (!(player.hasPermission(DisableChat.BYPASS_PERMISSION) || player.hasPermission(DisableChat.ADMIN_PERMISSION))) {
-            event.setCancelled(config.getBoolean(DisableChat.YAML_BOOLEAN_PATH));
+            if (config.getBoolean(DisableChat.CHAT_DISABLED_CONFIG_PATH)) {
+                event.setCancelled(true);
+            }
         }
 
     }

@@ -3,14 +3,13 @@ package net.beocraft.plugins.disablechat;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class DisableChat extends JavaPlugin {
 
     public static final String ADMIN_PERMISSION = "disablechat.admin";
     public static final String BYPASS_PERMISSION = "disablechat.bypass";
-    public static final String YAML_BOOLEAN_PATH = "enabled";
+    public static final String CHAT_DISABLED_CONFIG_PATH = "enabled";
 
     @Override
     public void onEnable() {
@@ -24,7 +23,7 @@ public final class DisableChat extends JavaPlugin {
         saveDefaultConfig();
 
         // Display current configuration
-        if (getConfig().getBoolean(YAML_BOOLEAN_PATH)) {
+        if (getConfig().getBoolean(CHAT_DISABLED_CONFIG_PATH)) {
             logger.info("Plugin is enabled, any chat attempt will be blocked");
         } else {
             logger.info("Plugin is disabled, anyone can chat");
@@ -32,7 +31,7 @@ public final class DisableChat extends JavaPlugin {
 
         // Registration
         getServer().getPluginManager().registerEvents(new ChatListener(config), this);
-        Objects.requireNonNull(getCommand("disablechat")).setExecutor(new CustomCommandExecutor(config,logger));
+        getCommand("disablechat").setExecutor(new CustomCommandExecutor(config, logger));
     }
 
 }

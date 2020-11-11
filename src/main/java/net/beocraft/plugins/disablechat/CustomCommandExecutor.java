@@ -6,7 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,44 +24,32 @@ public class CustomCommandExecutor implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (player.hasPermission(DisableChat.ADMIN_PERMISSION)) {
-                // Player with Admin permission
-                return commandExecutor(player, args);
-            }
-        } else {
-            // Console or RemoteConsole
-            return commandExecutor(sender, args);
-        }
-        return false;
-    }
-
-    private boolean commandExecutor(CommandSender sender, String[] args) {
-        if (args.length == 0) {
-            if (config.getBoolean(DisableChat.YAML_BOOLEAN_PATH)) {
-                // Enabled
-                sender.sendMessage(prefix(true));
-            } else {
-                // Disabled
-                sender.sendMessage(prefix(false));
-            }
-            return true;
-        } else {
-            if (args.length == 1) {
-                if (args[0].equals(POSSIBLE_VALUES[0])) {
+        if (sender.hasPermission(DisableChat.ADMIN_PERMISSION)) {
+            if (args.length == 0) {
+                if (config.getBoolean(DisableChat.CHAT_DISABLED_CONFIG_PATH)) {
                     // Enabled
-                    config.set(DisableChat.YAML_BOOLEAN_PATH, true);
                     sender.sendMessage(prefix(true));
-                    logger.info("Chat blocking is now enabled");
-                    return true;
-                }
-                if (args[0].equals(POSSIBLE_VALUES[1])) {
+                } else {
                     // Disabled
-                    config.set(DisableChat.YAML_BOOLEAN_PATH, false);
                     sender.sendMessage(prefix(false));
-                    logger.info("Chat blocking is now disabled");
-                    return true;
+                }
+                return true;
+            } else {
+                if (args.length == 1) {
+                    if (args[0].equals(POSSIBLE_VALUES[0])) {
+                        // Enabled
+                        config.set(DisableChat.CHAT_DISABLED_CONFIG_PATH, true);
+                        sender.sendMessage(prefix(true));
+                        logger.info("Chat blocking is now enabled");
+                        return true;
+                    }
+                    if (args[0].equals(POSSIBLE_VALUES[1])) {
+                        // Disabled
+                        config.set(DisableChat.CHAT_DISABLED_CONFIG_PATH, false);
+                        sender.sendMessage(prefix(false));
+                        logger.info("Chat blocking is now disabled");
+                        return true;
+                    }
                 }
             }
         }

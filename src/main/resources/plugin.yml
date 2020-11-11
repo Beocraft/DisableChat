@@ -11,7 +11,7 @@ commands:
     description: Controls the plugin
     permission: disablechat.admin
     usage: "§cUsage: /<command> [enable | disable]"
-    aliases: [dc]
+    aliases: [ dc ]
 permissions:
   disablechat.admin:
     description: Enables the admin command

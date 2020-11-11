@@ -18,4 +18,4 @@ There are only 3 commands:
 This project uses the:
 - [SPIGOT API](https://hub.spigotmc.org/stash/projects/SPIGOT) - Contains both open source code and closed source code owned by Mojang Studios AD (all of this code is only included in the distributable jar found in the releases tab of this project)
 ## License
-This project uses the MIT Licence, please take a look at [LICENSE.md](LICENSE.md) for more information!
+This project uses the MIT Licence, please take a look at [project license file](https://github.com/Beocraft/DisableChat/blob/main/LICENSE) for more information!
