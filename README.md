@@ -16,5 +16,5 @@ There are only 3 commands:
 ## Libraries
 This project uses the:
 - [SPIGOT API](https://hub.spigotmc.org/stash/projects/SPIGOT) - Contains both open source code and closed source code owned by Mojang Studios AD (all of this code is only included in the distributable jar found in the releases tab of this project)
-## Licence
-This project uses the MIT Licence, please take a look at [LICENCE.md](LICENCE.md) for more information!
+## License
+This project uses the MIT Licence, please take a look at [LICENSE.md](LICENSE.md) for more information!
